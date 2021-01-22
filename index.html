@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Vidal Pablo Javier site</title>
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/animate.min.css" rel="stylesheet" />
+    <link href="css/owl.carousel.css" rel="stylesheet" />
+    <link href="css/owl.transitions.css" rel="stylesheet" />
+    <link href="css/prettyPhoto.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+      function toggleInfo(articleid, info) {
+        var entry = document.getElementById(articleid);
+        var abs = document.getElementById("abs_" + articleid);
+        var rev = document.getElementById("rev_" + articleid);
+        var bib = document.getElementById("bib_" + articleid);
+
+        if (abs && info == "abstract") {
+          abs.className.indexOf("noshow") == -1
+            ? (abs.className = "abstract noshow")
+            : (abs.className = "abstract show");
+        } else if (rev && info == "comment") {
+          rev.className.indexOf("noshow") == -1
+            ? (rev.className = "comment noshow")
+            : (rev.className = "comment show");
+        } else if (bib && info == "bibtex") {
+          bib.className.indexOf("noshow") == -1
+            ? (bib.className = "bibtex noshow")
+            : (bib.className = "bibtex show");
+        } else {
+          return;
+        }
+
+        // check if one or the other is available
+        var revshow;
+        var absshow;
+        var bibshow;
+        abs && abs.className.indexOf("noshow") == -1
+          ? (absshow = true)
+          : (absshow = false);
+        rev && rev.className.indexOf("noshow") == -1
+          ? (revshow = true)
+          : (revshow = false);
+        bib && bib.className.indexOf("noshow") == -1
+          ? (bibshow = true)
+          : (bibshow = false);
+
+        // highlight original entry
+        if (entry) {
+          if (revshow || absshow || bibshow) {
+            entry.className = "entry highlight show";
+          } else {
+            entry.className = "entry show";
+          }
+        }
+
+        // When there's a combination of abstract/comment/bibtex showing, need to add class for correct styling
+        if (absshow) {
+          revshow || bibshow
+            ? (abs.className = "abstract nextshow")
+            : (abs.className = "abstract");
+        }
+        if (revshow) {
+          bibshow
+            ? (rev.className = "comment nextshow")
+            : (rev.className = "comment");
+        }
+      }
+    </script>
+    <style type="text/css">
+      table {
+        border: 1px gray none;
+        width: 100%;
+        empty-cells: show;
+        border-spacing: 0em 0.1em;
+        margin: 1em 0em;
+      }
+      th,
+      td {
+        border: none;
+        padding: 0.5em;
+        vertical-align: top;
+        text-align: justify;
+      }
+
+      td a {
+        color: navy;
+        text-decoration: none;
+      }
+      td a:hover {
+        text-decoration: underline;
+      }
+
+      tr.noshow {
+        display: none;
+      }
+      tr.highlight td {
+        background-color: #efefef;
+        border-top: 2px #2e2e2e solid;
+        font-weight: bold;
+      }
+      tr.abstract td,
+      tr.comment td,
+      tr.bibtex td {
+        background-color: #efefef;
+        text-align: justify;
+        border-bottom: 2px #2e2e2e solid;
+      }
+      tr.nextshow td {
+        border-bottom-style: none;
+      }
+
+      tr.bibtex pre {
+        width: 100%;
+        overflow: auto;
+        white-space: pre-wrap;
+      }
+      p.infolinks {
+        margin: 0.3em 0em 0em 0em;
+        padding: 0px;
+      }
+
+      @media print {
+        p.infolinks,
+        #qs_settings,
+        #quicksearch,
+        t.bibtex {
+          display: none !important;
+        }
+        tr {
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <!--/head-->
+
+  <body id="home" class="homepage">
+    <header id="header">
+      <nav
+        id="main-menu"
+        class="navbar navbar-default navbar-fixed-top"
+        role="banner"
+      >
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"></a>
+          </div>
+
+          <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+              <li class="scroll active"><a href="#home">About me</a></li>
+              <li class="scroll"><a href="#portfolio">Research</a></li>
+              <li class="scroll"><a href="#services">Development</a></li>
+
+              <li class="scroll"><a href="#get-in-touch">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/.container-->
+      </nav>
+      <!--/nav-->
+    </header>
+    <!--/header-->
+
+    <section id="cta" class="wow fadeIn">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-xs-6 team-column col-md-3">
+            <div
+              class="team-member wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="200ms"
+            >
+              <div class="team-img">
+                <img
+                  class="img-responsive"
+                  src="images/team/fotoVidal.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="team-info">
+                <h3>Pablo</h3>
+                <span>Doctor, Software Engineer</span>
+              </div>
+              <ul class="social-icons">
+                <li>
+                  <a href="https://github.com/pablojvidal"
+                    ><i class="fa fa-github"> @pablojvidal</i></a
+                  >
+                </li>
+                <li>
+                  <a href="www.linkedin.com/in/pablojvidal"
+                    ><i class="fa fa-linkedin"> Pablo Vidal</i></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>ABOUT ME</h2>
+          <p>
+            My name is Pablo Javier Vidal. I have a Computer Science Engineer
+            degree by University of Patagonia Austral (Argentina) and a PhD in
+            Computer Science by the University of Málaga (Spain). I received
+            degree in september 2008 and my PhD in December 2015.
+          </p>
+          <p>
+            I teach as a professor at the National University of Cuyo. I like
+            software development and I have been developing custom software in
+            the academic context and in the industry. One of the central
+            component in the development process that I follow is to develop
+            quality products following current standards and maximize teamwork
+            to reach the objectives.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!--/#cta-->
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Research</h2>
+          <p class="text-center wow fadeInDown">
+            My research work focuses on different topics, each one aimed at
+            solving existing problems in society.
+          </p>
+        </div>
+
+        <div class="text-center" data-filter=".res">
+          <ul class="portfolio-filter">
+            <li><a class="active" href="#" data-filter=".res">Topics</a></li>
+            <li><a href="#" data-filter=".publications">Publications</a></li>
+            <li><a href="#" data-filter=".corporate">Projects</a></li>
+          </ul>
+          <!--/#portfolio-filter-->
+        </div>
+
+        <div class="portfolio-items">
+          <div class="portfolio-item res">
+            <div class="portfolio-item-inner">
+              <img
+                class="img-responsive"
+                src="images/research/bio.jpg"
+                alt=""
+              />
+              <div class="portfolio-info">
+                <h3>Bioinformatics</h3>
+                <!--    Lorem Ipsum Dolor Sit-->
+                <a
+                  class="preview"
+                  href="images/portfolio/fullbio.JPG"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-eye"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item res">
+            <div class="portfolio-item-inner">
+              <img
+                class="img-responsive"
+                src="images/research/smart.jpg"
+                alt=""
+              />
+              <div class="portfolio-info">
+                <h3>Smart cities</h3>
+                <a
+                  class="preview"
+                  href="images/portfolio/full.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-eye"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item res">
+            <div class="portfolio-item-inner">
+              <img
+                class="img-responsive"
+                src="images/research/hpc.jpg"
+                alt=""
+              />
+              <div class="portfolio-info">
+                <h3>High Performance Computing</h3>
+
+                <a
+                  class="preview"
+                  href="images/portfolio/full.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-eye"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!--/.portfolio-item-->
+
+          <div class="portfolio-item res">
+            <div class="portfolio-item-inner">
+              <img
+                class="img-responsive"
+                src="images/research/sensor.jpg"
+                alt=""
+              />
+              <div class="portfolio-info">
+                <h3>Sensor Networks</h3>
+                Lorem Ipsum Dolor Sit
+                <a
+                  class="preview"
+                  href="images/portfolio/full.jpg"
+                  rel="prettyPhoto"
+                  ><i class="fa fa-eye"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="publications">
+            <table id="qs_table">
+              <tbody>
+                <tr id="ROJAS_ET_AL_JAIIO_2020" class="entry">
+                  <td>
+                    Rojas M, Carballido JA, Olivera AC and Vidal PJ (2020),
+                    <i
+                      >"Optimización de Support Vector Machine mediante
+                      metaheurísticas para clasificación de retinopatia
+                      diabética"</i
+                    >, In Congreso Internacional de Ciencias de la
+                    Computaci&oacute;n y Sistemas de Informaci&oacute;n CICSI
+                    2018.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('ROJAS_ET_AL_JAIIO_2020','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_ROJAS_ET_AL_JAIIO_2020" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{ROJAS_ET_AL_JAIIO_2020,
+                          author = {Matias Rojas and Jessica Andrea Carballido and Ana Carolina Olivera and Pablo Javier Vidal},
+                          title = {Optimización de Support Vector Machine mediante metaheurísticas para clasificación de retinopatia diabética},
+                          booktitle = {Congreso Internacional de Ciencias de la Computaci&oacute;n y Sistemas de Informaci&oacute;n CICSI 2018},
+                          year = {2020}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="VIDAL_OLIVERA_IEEELAT2019" class="entry">
+                  <td>
+                    Vidal PJ and Olivera AC (2019),
+                    <i
+                      >"Management of urban traffic flow based on traffic lights
+                      scheduling optimization"</i
+                    >, IEEE Latin America Transactions., jan, 2019. Vol. 17(1),
+                    pp. 102-110.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('VIDAL_OLIVERA_IEEELAT2019','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1109/TLA.2019.8826701"
+                        target="_blank"
+                        >DOI</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_VIDAL_OLIVERA_IEEELAT2019" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{VIDAL_OLIVERA_IEEELAT2019,
+                          author = {Pablo Javier Vidal and Ana Carolina Olivera},
+                          title = {Management of urban traffic flow based on traffic lights scheduling optimization},
+                          journal = {IEEE Latin America Transactions},
+                          year = {2019},
+                          volume = {17},
+                          number = {1},
+                          pages = {102-110},
+                          note = {Scimago JR (Q2 Computer Sciences). http://doi.org/10.1109/TLA.2019.8826701},
+                          doi = {10.1109/TLA.2019.8826701}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="PASTRANA_ICTUNPA_2019" class="entry">
+                  <td>
+                    Patrana S, Olivera AC and Vidal PJ (2019),
+                    <i
+                      >"An&aacute;lisis del Algoritmo Gen&eacute;tico Celular
+                      para el Problema de Ensamblado de Cadenas de ADN"</i
+                    >, Informes Cient&iacute;ficos T&eacute;cnicos - UNPA. Vol.
+                    3(11), pp. 236-248. Universidad Nacional de la Patagonia
+                    Austral.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('PASTRANA_ICTUNPA_2019','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.22305/ict-unpa.v11.n3.804"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="https://doi.org/10.22305/ict-unpa.v11.n3.804"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_PASTRANA_ICTUNPA_2019" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{PASTRANA_ICTUNPA_2019,
+                          author = {Sabrina Patrana and Ana Carolina Olivera and Pablo Javier Vidal},
+                          title = {An&aacute;lisis del Algoritmo Gen&eacute;tico Celular para el Problema de Ensamblado de Cadenas de ADN},
+                          journal = {Informes Cient&iacute;ficos T&eacute;cnicos - UNPA},
+                          publisher = {Universidad Nacional de la Patagonia Austral},
+                          year = {2019},
+                          volume = {3},
+                          number = {11},
+                          pages = {236-248},
+                          url = {https://doi.org/10.22305/ict-unpa.v11.n3.804},
+                          doi = {10.22305/ict-unpa.v11.n3.804}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Nesmachnow_IJTST_2019" class="entry">
+                  <td>
+                    Nesmachnow S, Massobrio R, Arreche E, Mumford C, Olivera AC,
+                    Vidal PJ and Tchernykh A (2019),
+                    <i
+                      >"Traffic lights synchronization for Bus Rapid Transit
+                      using a parallel evolutionary algorithm"</i
+                    >, International Journal of Transportation Science and
+                    Technology. Vol. 8(1), pp. 53-67.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('Nesmachnow_IJTST_2019','abstract')"
+                        >Abstract</a
+                      >] [<a
+                        href="javascript:toggleInfo('Nesmachnow_IJTST_2019','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1016/j.ijtst.2018.10.002"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="https://doi.org/10.1016/j.ijtst.2018.10.002"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="abs_Nesmachnow_IJTST_2019" class="abstract noshow">
+                  <td>
+                    <b>Abstract</b>: This article presents a parallel
+                    evolutionary algorithm for public transport optimization by
+                    synchronizing traffic lights in the context of Bus Rapid
+                    Transit systems. The related optimization problem is
+                    NP-hard, so exact computational methods are not useful to
+                    solve real-world instances. Our research introduces a
+                    parallel evolutionary algorithm to efficiently configure and
+                    synchronize traffic lights and improve the average speed of
+                    buses and other vehicles. The Bus Rapid Transit on Garzón
+                    Avenue (Montevideo, Uruguay) is used as a case study. This
+                    is an interesting complex urban scenario due to the number
+                    of crossings, streets, and traffic lights in the zone. The
+                    experimental analysis compares the numerical results
+                    computed by the parallel evolutionary algorithm with a
+                    scenario that models the current reality. The results show
+                    that the proposed evolutionary algorithm achieves better
+                    quality of service when compared with the current reality,
+                    improving up to 15.3% the average bus speed and 24.8% the
+                    average speed of other vehicles. A multiobjective
+                    optimization analysis also demonstrates that additional
+                    improvements can be achieved by assigning different
+                    priorities to buses and other vehicles. In addition, further
+                    improvements can be achieved on a modified scenario simply
+                    by deleting a few bus stops and changing some traffic lights
+                    rules. The benefits of using a parallel solver are also
+                    highlighted, as the parallel version is able to accelerate
+                    the execution times up to 26.9× when compared with the
+                    sequential version.
+                  </td>
+                </tr>
+                <tr id="bib_Nesmachnow_IJTST_2019" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{Nesmachnow_IJTST_2019,
+                          author = {Sergio Nesmachnow and Renzo Massobrio and Efra&iacute;n Arreche and Christine Mumford and Ana Carolina Olivera and Pablo Javier Vidal and Andrei Tchernykh},
+                          title = {Traffic lights synchronization for Bus Rapid Transit using a parallel evolutionary algorithm},
+                          journal = {International Journal of Transportation Science and Technology},
+                          year = {2019},
+                          volume = {8},
+                          number = {1},
+                          pages = {53-67},
+                          url = {https://doi.org/10.1016/j.ijtst.2018.10.002},
+                          doi = {10.1016/j.ijtst.2018.10.002}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="ROJAS_ETAL_LAT2020" class="entry">
+                  <td>
+                    Vidal PJ and Olivera AC (2018),
+                    <i
+                      >"Solving the DNA Fragment Assembly Problem with a
+                      Parallel Discrete Firefly Algorithm implemented on GPU"</i
+                    >, Computer Science and Information Systems. Vol. 15(2), pp.
+                    273-293.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('ROJAS_ETAL_LAT2020','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_ROJAS_ETAL_LAT2020" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{ROJAS_ETAL_LAT2020,
+                          author = {Pablo Javier Vidal and Ana Carolina Olivera},
+                          title = {Solving the DNA Fragment Assembly Problem with a Parallel Discrete Firefly Algorithm implemented on GPU},
+                          journal = {Computer Science and Information Systems},
+                          year = {2018},
+                          volume = {15},
+                          number = {2},
+                          pages = {273-293},
+                          note = {Scimago Journal Rank Computer Science (miscellaneous) Q3. JCR IF 0.613.}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="VIDAL_OLIVERA_COMSIS_2018" class="entry">
+                  <td>
+                    Vidal PJ and Olivera AC (2018),
+                    <i
+                      >"Solving the DNA Fragment Assembly Problem with a
+                      Parallel Discrete Firefly Algorithm implemented on GPU"</i
+                    >, Computer Science and Information Systems. Vol. 15(2), pp.
+                    273-293.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('VIDAL_OLIVERA_COMSIS_2018','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_VIDAL_OLIVERA_COMSIS_2018" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{VIDAL_OLIVERA_COMSIS_2018,
+                          author = {Pablo Javier Vidal and Ana Carolina Olivera},
+                          title = {Solving the DNA Fragment Assembly Problem with a Parallel Discrete Firefly Algorithm implemented on GPU},
+                          journal = {Computer Science and Information Systems},
+                          year = {2018},
+                          volume = {15},
+                          number = {2},
+                          pages = {273-293},
+                          note = {Scimago Journal Rank Computer Science (miscellaneous) Q3. JCR IF 0.613.}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="VIDAL_OLIVERA_DYNA_2018" class="entry">
+                  <td>
+                    Vidal PJ and Olivera AC (2018),
+                    <i
+                      >"Ensamblado de fragmentos de ADN utilizando un novedoso
+                      algoritmo de luci ernaga en GPU"</i
+                    >, DYNA., jan, 2018. Vol. 85(204), pp. 108-116. Universidad
+                    Nacional de Colombia.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('VIDAL_OLIVERA_DYNA_2018','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.15446/dyna.v85n204.60078"
+                        target="_blank"
+                        >DOI</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_VIDAL_OLIVERA_DYNA_2018" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{VIDAL_OLIVERA_DYNA_2018,
+                          author = {Pablo Javier Vidal and Ana Carolina Olivera},
+                          title = {Ensamblado de fragmentos de ADN utilizando un novedoso algoritmo de luci ernaga en GPU},
+                          journal = {DYNA},
+                          publisher = {Universidad Nacional de Colombia},
+                          year = {2018},
+                          volume = {85},
+                          number = {204},
+                          pages = {108--116},
+                          note = {Scimago Journal Rank (Q3 Engineering).},
+                          doi = {10.15446/dyna.v85n204.60078}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="OLIVERA_ET_AL_CICSI2018" class="entry">
+                  <td>
+                    Olivera AC, Dussaut JS, Ponzoni I and Vidal PJ (2018),
+                    <i
+                      >"Algoritmos Evolutivos Multiobjetivo aplicados a la
+                      Selecci&oacute;n de Caracter&iacute;sticas en Microarrays
+                      de Datos de C&aacute;ncer"</i
+                    >, In Congreso Internacional de Ciencias de la
+                    Computaci&oacute;n y Sistemas de Informaci&oacute;n CICSI
+                    2018.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('OLIVERA_ET_AL_CICSI2018','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_OLIVERA_ET_AL_CICSI2018" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{OLIVERA_ET_AL_CICSI2018,
+                          author = {Ana Carolina Olivera and Julieta Sol Dussaut and Ignacio Ponzoni and Pablo Javier Vidal},
+                          title = {Algoritmos Evolutivos Multiobjetivo aplicados a la Selecci&oacute;n de Caracter&iacute;sticas en Microarrays de Datos de C&aacute;ncer},
+                          booktitle = {Congreso Internacional de Ciencias de la Computaci&oacute;n y Sistemas de Informaci&oacute;n CICSI 2018},
+                          year = {2018}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Dussaut_ET_AL_CEC2018" class="entry">
+                  <td>
+                    Dussaut JS, Vidal PJ, Ponzoni I and Olivera AC (2018),
+                    <i
+                      >"Comparing Multiobjective Evolutionary Algorithms for
+                      Cancer Data Microarray Feature Selection"</i
+                    >, In 2018 IEEE Congress on Evolutionary Computation, CEC
+                    2018, Rio Janeiro, Brazil, July 8-13, 2018. , pp. 1-8.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('Dussaut_ET_AL_CEC2018','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1109/CEC.2018.8477812"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="https://doi.org/10.1109/CEC.2018.8477812"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Dussaut_ET_AL_CEC2018" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{Dussaut_ET_AL_CEC2018,
+                          author = {Julieta Sol Dussaut and Pablo Javier Vidal and Ignacio Ponzoni and Ana Carolina Olivera},
+                          title = {Comparing Multiobjective Evolutionary Algorithms for Cancer Data Microarray Feature Selection},
+                          booktitle = {2018 IEEE Congress on Evolutionary Computation, CEC 2018, Rio Janeiro, Brazil, July 8-13, 2018},
+                          year = {2018},
+                          pages = {1--8},
+                          note = {ISBN: 978-1-5090-6017-7. QUALIS <b>A1</b>},
+                          url = {https://doi.org/10.1109/CEC.2018.8477812},
+                          doi = {10.1109/CEC.2018.8477812}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="VIDAL_OLIVERA_CLADI2017" class="entry">
+                  <td>
+                    Vidal PJ and OIivera AC (2017),
+                    <i
+                      >"CLADI 2017 Congreso Latinoamericano de
+                      Ingenier&iacute;a"</i
+                    >, In 1er. Congreso Latinoamericano de Ingenier&iacute;a
+                    (CLADI 2017). , pp. 200. Universidad Tecnol&oacute;gica
+                    Nacional.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('VIDAL_OLIVERA_CLADI2017','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_VIDAL_OLIVERA_CLADI2017" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inbook{VIDAL_OLIVERA_CLADI2017,
+                          author = {Pablo Javier Vidal and Ana Carolina OIivera},
+                          title = {CLADI 2017 Congreso Latinoamericano de Ingenier&iacute;a},
+                          booktitle = {1er. Congreso Latinoamericano de Ingenier&iacute;a (CLADI 2017)},
+                          publisher = {Universidad Tecnol&oacute;gica Nacional},
+                          year = {2017},
+                          pages = {200}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2017d" class="entry">
+                  <td>
+                    Vidal P and Olivera AC (2017),
+                    <i
+                      >"Posicionamiento de Antenas mediante Algoritmo de
+                      Arrecife de Corales"</i
+                    >, In I Congreso Latinoamericano de Ingenier&iacute;a (CLADI
+                    2017).
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2017d','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2017d" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{Vidal2017d,
+                          author = {Pablo Vidal and Ana Carolina Olivera},
+                          title = {Posicionamiento de Antenas mediante Algoritmo de Arrecife de Corales},
+                          booktitle = {I Congreso Latinoamericano de Ingenier&iacute;a (CLADI 2017)},
+                          year = {2017}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2017f" class="entry">
+                  <td>
+                    Vidal P and Olivera AC (2017),
+                    <i
+                      >"Micro Genetic Algorithm for Smart Traffic Lights, Case
+                      of Study: Caleta Olivia"</i
+                    >, In XLIII Conferencia Latinoamericana en InformÃ¡tica.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2017f','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2017f" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{Vidal2017f,
+                          author = {Pablo Vidal and Ana Carolina Olivera},
+                          title = {Micro Genetic Algorithm for Smart Traffic Lights, Case of Study: Caleta Olivia},
+                          booktitle = {XLIII Conferencia Latinoamericana en InformÃ¡tica},
+                          year = {2017}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2017a" class="entry">
+                  <td>
+                    Vidal P and Olivera AC (2017),
+                    <i>"Assembling using a Novel GPU Firefly Algorithm"</i>, In
+                    Dyna.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2017a','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2017a" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{Vidal2017a,
+                          author = {Pablo Vidal and Ana Carolina Olivera},
+                          title = {Assembling using a Novel GPU Firefly Algorithm},
+                          booktitle = {Dyna},
+                          year = {2017}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2017e" class="entry">
+                  <td>
+                    Vidal P and Olivera AC (2017),
+                    <i
+                      >"A Parallel Tabu Search approach for Smart Traffic
+                      Lights, Case of Study: Caleta Olivia"</i
+                    >, In XII International Conference on Parallel Processing
+                    and Applied Mathematics.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2017e','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2017e" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{Vidal2017e,
+                          author = {Pablo Vidal and Ana Carolina Olivera},
+                          title = {A Parallel Tabu Search approach for Smart Traffic Lights, Case of Study: Caleta Olivia},
+                          booktitle = {XII International Conference on Parallel Processing and Applied Mathematics},
+                          year = {2017}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2017h" class="entry">
+                  <td>
+                    Vidal P, Nesmachnow S and Massobrio R (2017),
+                    <i
+                      >"Machine Learning for processing GPS large datasets
+                      traffic passengers"</i
+                    >, In Latin America High Performance Computing Conference.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2017h','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2017h" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{Vidal2017h,
+                          author = {Pablo Vidal and Sergio Nesmachnow and Renzo Massobrio},
+                          title = {Machine Learning for processing GPS large datasets traffic passengers},
+                          booktitle = {Latin America High Performance Computing Conference},
+                          year = {2017}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2016" class="entry">
+                  <td>
+                    Vidal P, Alba E and Luna F (2017),
+                    <i
+                      >"Solving optimization problems using a hybrid systolic
+                      search on GPU plus CPU"</i
+                    >, Soft Computing., Jun, 2017. Vol. 21(12), pp. 3227-3245.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2016','abstract')"
+                        >Abstract</a
+                      >] [<a href="javascript:toggleInfo('Vidal2016','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1007/s00500-015-2005-x"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="https://doi.org/10.1007/s00500-015-2005-x"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="abs_Vidal2016" class="abstract noshow">
+                  <td>
+                    <b>Abstract</b>: In recent years, graphics processing units
+                    (GPUs) have emerged as a powerful architecture for solving a
+                    broad spectrum of applications in very short periods of
+                    time. However, most existing GPU optimization approaches do
+                    not exploit the full power available in a CPU--GPU platform.
+                    They have a tendency to leave one of them partially unused
+                    (usually the CPU) and fail to establish an accurate exchange
+                    of information that could help solve the target problem
+                    efficiently. Thus, better performance is expected from
+                    devising a hybrid CPU--GPU parallel algorithm that combines
+                    the highly parallel stream processing power of GPUs with the
+                    higher power of multi-core architectures. We have developed
+                    a hybrid methodology to efficiently solve optimization
+                    problems. We use a hybrid CPU--GPU architecture, to benefit
+                    from running it, in parallel, on both the CPU and the GPU.
+                    Our experiments over a heterogeneous set of combinatorial
+                    optimization problems with increasing dimensionality show a
+                    time gain of up to &dollar;&dollar;365backslashtimes
+                    &dollar;&dollar; 365 texttimes in our proposal, while
+                    demonstrating high numerical accuracy. This work is intended
+                    to open up a new line of research that matches both
+                    architectures with new algorithms and cooperation
+                    techniques.
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2016" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{Vidal2016,
+                          author = {Vidal, Pablo and Alba, Enrique and Luna, Francisco},
+                          title = {Solving optimization problems using a hybrid systolic search on GPU plus CPU},
+                          journal = {Soft Computing},
+                          year = {2017},
+                          volume = {21},
+                          number = {12},
+                          pages = {3227--3245},
+                          url = {https://doi.org/10.1007/s00500-015-2005-x},
+                          doi = {10.1007/s00500-015-2005-x}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Fabbiani2017" class="entry">
+                  <td>
+                    Fabbiani E, Vidal P, Massobrio R and Nesmachnow S (2017),
+                    <i>"High Performance Computing. CARLA 2016"</i>, In High
+                    Performance Computing: Third Latin American Conference,
+                    CARLA 2016, Mexico City, Mexico, August 29--September 2,
+                    2016, Revised Selected Papers. Cham Vol. 697, pp. 146-160.
+                    Springer International Publishing.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Fabbiani2017','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1007/978-3-319-57972-6_11"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="http://dx.doi.org/10.1007/978-3-319-57972-6_11"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Fabbiani2017" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inbook{Fabbiani2017,
+                          author = {Fabbiani, Enzo and Vidal, Pablo and Massobrio, Renzo and Nesmachnow, Sergio},
+                          title = {High Performance Computing. CARLA 2016},
+                          booktitle = {High Performance Computing: Third Latin American Conference, CARLA 2016, Mexico City, Mexico, August 29--September 2, 2016, Revised Selected Papers},
+                          publisher = {Springer International Publishing},
+                          year = {2017},
+                          volume = {697},
+                          pages = {146--160},
+                          note = {Indexada en Scopus y DBLP},
+                          url = {http://dx.doi.org/10.1007/978-3-319-57972-6_11},
+                          doi = {10.1007/978-3-319-57972-6_11}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="NesmachnowetalCLAIO2016" class="entry">
+                  <td>
+                    Nesmachnow S, Arreche E, Massobrio R, Mumford C, Olivera C
+                    and Vidal P (2016),
+                    <i
+                      >"Traffic light optimization for Bus Rapid Transit using a
+                      parallel evolutionary algorithm: the case of Garzon Avenue
+                      in Montevideo, Uruguay"</i
+                    >, In Proceedings of the XVIII Latin-Iberoamerican
+                    Conference on Operations Research, CLAIO 2016. Santiago de
+                    Chile, Chile, Octubre, 2016.
+                    <p class="infolinks">
+                      [<a
+                        href="javascript:toggleInfo('NesmachnowetalCLAIO2016','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_NesmachnowetalCLAIO2016" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{NesmachnowetalCLAIO2016,
+                          author = {Sergio Nesmachnow and Efrain Arreche and Renzo Massobrio and Christine Mumford and Carolina Olivera and Pablo Vidal},
+                          title = {Traffic light optimization for Bus Rapid Transit using a parallel evolutionary algorithm: the case of Garzon Avenue in Montevideo, Uruguay},
+                          booktitle = {Proceedings of the XVIII Latin-Iberoamerican Conference on Operations Research, CLAIO 2016},
+                          year = {2016},
+                          note = {http://claio2016.cl/wp-content/uploads/2016/09/Proceedings_CLAIO2016.pdf}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICC2014" class="entry">
+                  <td>
+                    Villagra S, Pandolfi D, Lasso MG, Mercado V, Orozco S,
+                    Ser&oacute;n N, Vidal P and Montenegro C (2014),
+                    <i
+                      >"Metaheur&iacute;sticas h&iacute;bridas y paralelas
+                      aplicadas a problemas de ruteo de veh&iacute;culos"</i
+                    >, In XVI Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n. , pp. 104-108.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICC2014','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICC2014" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{WICC2014,
+                          author = {Villagra, Silvia and Pandolfi, Daniel and Lasso, Marta Graciela and Mercado, Viviana and Orozco, Sergio and Ser&oacute;n, Natalia and Vidal, Pablo and Montenegro, Cristian},
+                          editor = {SEDICI},
+                          title = {Metaheur&iacute;sticas h&iacute;bridas y paralelas aplicadas a problemas de ruteo de veh&iacute;culos},
+                          booktitle = {XVI Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2014},
+                          pages = {104-108},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2014.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/41854}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2014" class="entry">
+                  <td>
+                    Vidal P and Olivera AC (2014),
+                    <i
+                      >"A Parallel Discrete Firefly Algorithm on GPU for
+                      Permutation Combinatorial Optimization Problems"</i
+                    >, Communications in Computer and Information Science., In
+                    High Performance Computing. Vol. 485, pp. 191-205. Springer
+                    Berlin Heidelberg.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2014','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1007/978-3-662-45483-1_14"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="http://dx.doi.org/10.1007/978-3-662-45483-1_14"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2014" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{Vidal2014,
+                          author = {Pablo Vidal and Ana Carolina Olivera},
+                          editor = {G. Hern&aacute;ndez et al. (Eds.)},
+                          title = {A Parallel Discrete Firefly Algorithm on GPU for Permutation Combinatorial Optimization Problems},
+                          booktitle = {High Performance Computing},
+                          journal = {Communications in Computer and Information Science},
+                          publisher = {Springer Berlin Heidelberg},
+                          year = {2014},
+                          volume = {485},
+                          pages = {191-205},
+                          note = {Springer Berlin Heidelberg. Indexada en Scopus y DBLP.},
+                          url = {http://dx.doi.org/10.1007/978-3-662-45483-1_14},
+                          doi = {10.1007/978-3-662-45483-1_14}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="SNSJournal" class="entry">
+                  <td>
+                    Vidal P, Luna F and Alba E (2014),
+                    <i
+                      >"Systolic neighborhood search on graphics processing
+                      units"</i
+                    >, Soft Computing. Vol. 18(1), pp. 125-142. Springer Berlin
+                    Heidelberg.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('SNSJournal','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1007/s00500-013-1041-7"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="http://dx.doi.org/10.1007/s00500-013-1041-7"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_SNSJournal" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{SNSJournal,
+                          author = {Vidal, Pablo and Luna, Francisco and Alba, Enrique},
+                          title = {Systolic neighborhood search on graphics processing units},
+                          journal = {Soft Computing},
+                          publisher = {Springer Berlin Heidelberg},
+                          year = {2014},
+                          volume = {18},
+                          number = {1},
+                          pages = {125-142},
+                          note = {Indexada en ISI (Impact Factor 2015: <b>1.630</b>), Scopus y DBLP.},
+                          url = {http://dx.doi.org/10.1007/s00500-013-1041-7},
+                          doi = {10.1007/s00500-013-1041-7}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICC2013" class="entry">
+                  <td>
+                    Villagra S, Pandolfi D, Villagra A, Lasso MG, Rasjido J,
+                    Mercado V, Orozco S, Ser&oacute;n N, Vidal P, Vald&eacute;z
+                    J and Montenegro C (2013),
+                    <i
+                      >"Metaheur&iacute;sticas avanzadas y de poblaci&oacute;n
+                      descentralizada para problemas de ruteo de
+                      veh&iacute;culos"</i
+                    >, In XV Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n. , pp. 875-879.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICC2013','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICC2013" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{WICC2013,
+                          author = {Villagra, Silvia and Pandolfi, Daniel and Villagra, Andrea and Lasso, Marta Graciela and Rasjido, Jos&eacute; and Mercado, Viviana and Orozco, Sergio and Ser&oacute;n, Natalia and Vidal, Pablo and Vald&eacute;z, Jorge and Montenegro, Cristian},
+                          title = {Metaheur&iacute;sticas avanzadas y de poblaci&oacute;n descentralizada para problemas de ruteo de veh&iacute;culos},
+                          booktitle = {XV Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2013},
+                          pages = {875-879},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2013.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/27325}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="CACIC2012A" class="entry">
+                  <td>
+                    Vidal P, Luna P and Alba E (2012),
+                    <i>"Optimizaci&oacute;n Sistolica sobre GPUs"</i>, XVIII
+                    Congreso Argentino de Ciencias de la Computaci&oacute;n.
+                    Vol. ISBN 978-987-1648-34-4
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('CACIC2012A','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_CACIC2012A" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{CACIC2012A,
+                          author = {Vidal, P. and Luna, P. and Alba, E.},
+                          title = {Optimizaci&oacute;n Sistolica sobre GPUs},
+                          journal = {XVIII Congreso Argentino de Ciencias de la Computaci&oacute;n},
+                          year = {2012},
+                          volume = {ISBN 978-987-1648-34-4},
+                          note = {run:./PUBLICACIONES/VIDAL_CACIC_2012.pdf[PDF]http://redunci.info.unlp.edu.ar/files/indice_Cacic_2012.pdf}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICC2012" class="entry">
+                  <td>
+                    de San Pedro M, Pandolfi D, Lasso M, Villagra A, Lorenzetti
+                    D, Fernandez C, Valdez J, Varas V, Vidal P, Bilbao M and
+                    Leguizamon G (2012),
+                    <i
+                      >"Metaheur&iacute;sticas Poblacionales y T&eacute;cnicas
+                      de Miner&iacute;a de Datos Aplicadas a Problemas de
+                      Optimizaci&oacute;n de Energ&iacute;a E&oacute;lica"</i
+                    >, XVII Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICC2012','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICC2012" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{WICC2012,
+                          author = {M. de San Pedro and D. Pandolfi and M. Lasso and A. Villagra and D. Lorenzetti and C. Fernandez and J. Valdez and V. Varas and P. Vidal and M. Bilbao and G. Leguizamon},
+                          title = {Metaheur&iacute;sticas Poblacionales y T&eacute;cnicas de Miner&iacute;a de Datos Aplicadas a Problemas de Optimizaci&oacute;n de Energ&iacute;a E&oacute;lica},
+                          journal = {XVII Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2012},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2012.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/18398}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="Vidal2012" class="entry">
+                  <td>
+                    Alba E and Vidal P (2012),
+                    <i>"Systolic Optimization on GPU Platforms"</i>, In Computer
+                    Aided Systems Theory - EUROCAST 2011. Vol. 6927, pp.
+                    375-383. Springer Berlin Heidelberg.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('Vidal2012','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1007/978-3-642-27549-4_48"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="http://dx.doi.org/10.1007/978-3-642-27549-4_48"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_Vidal2012" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @incollection{Vidal2012,
+                          author = {Alba, Enrique and Vidal, Pablo},
+                          editor = {Moreno-D&iacute;az, Roberto and Pichler, Franz and Quesada-Arencibia, Alexis},
+                          title = {Systolic Optimization on GPU Platforms},
+                          booktitle = {Computer Aided Systems Theory - EUROCAST 2011},
+                          publisher = {Springer Berlin Heidelberg},
+                          year = {2012},
+                          volume = {6927},
+                          pages = {375-383},
+                          url = {http://dx.doi.org/10.1007/978-3-642-27549-4_48},
+                          doi = {10.1007/978-3-642-27549-4_48}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICC2011" class="entry">
+                  <td>
+                    San Pedro MEd, Pandolfi D, Lasso MG, Villagra A, Lorenzetti
+                    D, Vald&eacute;z J, Varas V, Vidal P and Bilbao M (2011),
+                    <i
+                      >"Dise&ntilde;o &oacute;ptimo de parques e&oacute;licos
+                      con metaheur&iacute;sticas poblacionales y t&eacute;cnicas
+                      de miner&iacute;a de datos utilizando procesamiento
+                      paralelo"</i
+                    >, In XIII Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n. , pp. 204-209.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICC2011','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICC2011" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{WICC2011,
+                          author = {San Pedro, Mar&iacute;a Eugenia de and Pandolfi, Daniel and Lasso, Marta Graciela and Villagra, Andrea and Lorenzetti, Daniel and Vald&eacute;z, Jorge and Varas, Valeria and Vidal, Pablo and Bilbao, Mart&iacute;n},
+                          title = {Dise&ntilde;o &oacute;ptimo de parques e&oacute;licos con metaheur&iacute;sticas poblacionales y t&eacute;cnicas de miner&iacute;a de datos utilizando procesamiento paralelo},
+                          booktitle = {XIII Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2011},
+                          pages = {204-209},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2011.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/20005}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="VidalA10" class="entry">
+                  <td>
+                    Vidal P and Alba E (2010),
+                    <i
+                      >"Cellular Genetic Algorithm on Graphic Processing
+                      Units"</i
+                    >, In Nature Inspired Cooperative Strategies for
+                    Optimization (NICSO 2010). Vol. 284, pp. 223-232. Springer
+                    Berlin Heidelberg. Indexada en Scopus y DBLP..
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('VidalA10','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1007/978-3-642-12538-6_19"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="http://dx.doi.org/10.1007/978-3-642-12538-6_19"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_VidalA10" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{VidalA10,
+                          author = {Vidal, Pablo and Alba, Enrique},
+                          editor = {Gonz&aacute;lez, Juan R. and Pelta, David Alejandro and Cruz, Carlos and Terrazas, Germ&aacute;n and Krasnogor, Natalio},
+                          title = {Cellular Genetic Algorithm on Graphic Processing Units},
+                          booktitle = {Nature Inspired Cooperative Strategies for Optimization (NICSO 2010)},
+                          publisher = {Springer Berlin Heidelberg. Indexada en Scopus y DBLP.},
+                          year = {2010},
+                          volume = {284},
+                          pages = {223-232},
+                          url = {http://dx.doi.org/10.1007/978-3-642-12538-6_19},
+                          doi = {10.1007/978-3-642-12538-6_19}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="CEC2010" class="entry">
+                  <td>
+                    Vidal P and Alba E (2010),
+                    <i
+                      >"A multi-GPU implementation of a Cellular Genetic
+                      Algorithm"</i
+                    >, In Evolutionary Computation (CEC), 2010 IEEE Congress
+                    on., July, 2010. , pp. 1-7.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('CEC2010','bibtex')"
+                        >BibTeX</a
+                      >] [<a
+                        href="https://doi.org/10.1109/CEC.2010.5586530"
+                        target="_blank"
+                        >DOI</a
+                      >] [<a
+                        href="http://dx.doi.org/10.1109/CEC.2010.5586530"
+                        target="_blank"
+                        >URL</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_CEC2010" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{CEC2010,
+                          author = {Vidal, P. and Alba, E.},
+                          title = {A multi-GPU implementation of a Cellular Genetic Algorithm},
+                          booktitle = {Evolutionary Computation (CEC), 2010 IEEE Congress on},
+                          year = {2010},
+                          pages = {1-7},
+                          note = {Indexada en Scopus. CORE/ERA <b>A</b>. Qualis <b>A1</b>.},
+                          url = {http://dx.doi.org/10.1109/CEC.2010.5586530},
+                          doi = {10.1109/CEC.2010.5586530}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="CACIC2010" class="entry">
+                  <td>
+                    de San Pedro M, Pandolfi D, Lasso M, Villagra A, Lorenzetti
+                    D, Fernandez C, Valdez J, Varas V, Vidal P, Bilbao M and
+                    Leguizamon G (2010),
+                    <i
+                      >"Metaheur&iacute;sticas Poblacionales y T&eacute;cnicas
+                      de Miner&iacute;a de Datos Aplicadas a Problemas de
+                      Optimizaci&oacute;n de Energ&iacute;a E&oacute;lica"</i
+                    >, XVII Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('CACIC2010','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_CACIC2010" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{CACIC2010,
+                          author = {M. de San Pedro and D. Pandolfi and M. Lasso and A. Villagra and D. Lorenzetti and C. Fernandez and J. Valdez and V. Varas and P. Vidal and M. Bilbao and G. Leguizamon},
+                          title = {Metaheur&iacute;sticas Poblacionales y T&eacute;cnicas de Miner&iacute;a de Datos Aplicadas a Problemas de Optimizaci&oacute;n de Energ&iacute;a E&oacute;lica},
+                          journal = {XVII Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2010},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2010.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/19448}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="EICB2010" class="entry">
+                  <td>
+                    de San Pedro M, Pandolfi D, Lasso M, A. Villagra JV, Varas
+                    V, Vidal P and Bilbao M (2010),
+                    <i
+                      >"Optimizaci&oacute;n en Energ&iacute;a E&oacute;lica:
+                      Utilizando Miner&iacute;a de Datos y
+                      Metaheur&iacute;sticas Poblacionales"</i
+                    >, Encuentro de Investigadores de Ciencias B&aacute;sicas,
+                    Aplicadas y Experimentales de Patagonia Austral.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('EICB2010','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_EICB2010" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{EICB2010,
+                          author = {M. de San Pedro and D. Pandolfi and M. Lasso and A. Villagra, J. Valdez and V. Varas and P. Vidal and M. Bilbao},
+                          title = {Optimizaci&oacute;n en Energ&iacute;a E&oacute;lica: Utilizando Miner&iacute;a de Datos y Metaheur&iacute;sticas Poblacionales},
+                          journal = {Encuentro de Investigadores de Ciencias B&aacute;sicas, Aplicadas y Experimentales de Patagonia Austral},
+                          year = {2010}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="EICB2009" class="entry">
+                  <td>
+                    de San Pedro M, Pandolfi D, Lasso M, Villagra A, Lorenzetti
+                    D, Fernandez C, Valdez J, Varas V, Vidal P, Bilbao M and
+                    Leguizamon G (2009),
+                    <i
+                      >"T&eacute;cnicas de Miner&iacute;a de Datos y
+                      Metaheur&iacute;sticas aplicadas a la explotaci&oacute;n
+                      eficiente de Energ&iacute;a E&oacute;lica"</i
+                    >, XI Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('EICB2009','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_EICB2009" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{EICB2009,
+                          author = {M. de San Pedro and D. Pandolfi and M. Lasso and A. Villagra and D. Lorenzetti and C. Fernandez and J. Valdez and V. Varas and P. Vidal and M. Bilbao and G. Leguizamon},
+                          title = {T&eacute;cnicas de Miner&iacute;a de Datos y Metaheur&iacute;sticas aplicadas a la explotaci&oacute;n eficiente de Energ&iacute;a E&oacute;lica},
+                          journal = {XI Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2009},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2009a.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/19696}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICCS2009" class="entry">
+                  <td>
+                    Rasjido J, Vidal P, Lasso M, Villagra A, de San Pedro E and
+                    Pandolfi D (2009),
+                    <i
+                      >"Seguridad y gesti&oacute;n del ambiente basado en un
+                      sistema Multi-agentes"</i
+                    >, XI Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICCS2009','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICCS2009" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{WICCS2009,
+                          author = {Rasjido, Jos&eacute; and Vidal, Pablo and Lasso, Marta and Villagra, Andrea and de San Pedro, Eugenia and Pandolfi, Daniel},
+                          title = {Seguridad y gesti&oacute;n del ambiente basado en un sistema Multi-agentes},
+                          journal = {XI Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2009},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2009b.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/19700}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="CICA2009" class="entry">
+                  <td>
+                    Pastrana S, Vidal P and Lasso M (2009),
+                    <i>"Sistema de Control de Acceso y perrmanencia - PASA"</i>,
+                    Congreso de Inteligencia Computacional Aplicada, Universidad
+                    de Palermo.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('CICA2009','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_CICA2009" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{CICA2009,
+                          author = {Pastrana, S. and Vidal, P. and Lasso, M.},
+                          title = {Sistema de Control de Acceso y perrmanencia - PASA},
+                          journal = {Congreso de Inteligencia Computacional Aplicada, Universidad de Palermo},
+                          year = {2009}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="UNPA08" class="entry">
+                  <td>
+                    Vidal P, Pastrana S and Elba Martin A (2008),
+                    <i
+                      >"Dise&ntilde;ando la Navegaci&oacute;n de una
+                      aplicaci&oacute;n web: un enfoque comparativo"</i
+                    >, IX Escuela de Inform&aacute;tica, Universidad de la
+                    Patagonia Austral.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('UNPA08','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_UNPA08" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{UNPA08,
+                          author = {Vidal, P. and Pastrana, S. and Elba Martin, A.},
+                          title = {Dise&ntilde;ando la Navegaci&oacute;n de una aplicaci&oacute;n web: un enfoque comparativo},
+                          journal = {IX Escuela de Inform&aacute;tica, Universidad de la Patagonia Austral},
+                          year = {2008}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="UNPA08C" class="entry">
+                  <td>
+                    Vidal P, Bilbao M and Pandolfi D (2008),
+                    <i
+                      >"Simulaci&oacute;n de aterrizajes de aviones mediante
+                      sistemas multiagentes"</i
+                    >, IX Escuela de Inform&aacute;tica, Universidad de la
+                    Patagonia Austral.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('UNPA08C','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_UNPA08C" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{UNPA08C,
+                          author = {Vidal, P. and Bilbao, M. and Pandolfi, D.},
+                          title = {Simulaci&oacute;n de aterrizajes de aviones mediante sistemas multiagentes},
+                          journal = {IX Escuela de Inform&aacute;tica, Universidad de la Patagonia Austral},
+                          year = {2008}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICC08C" class="entry">
+                  <td>
+                    de San Pedro M, Seron N, Villagra S, D&iacute;az F,
+                    Montenegro C, Orozco S, Vald&eacute;z J and Vidal P (2008),
+                    <i
+                      >"Implementaci&oacute;n de un Sistema de
+                      Informaci&oacute;n Geogr&aacute;fica en Municipios de la
+                      Zona Norte de la Provincia de Santa Cruz"</i
+                    >, X Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICC08C','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICC08C" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{WICC08C,
+                          author = {de San Pedro, M. and Seron, N. and Villagra, S. and D&iacute;az, F. and Montenegro, C. and Orozco, S. and Vald&eacute;z, J. and Vidal, P.},
+                          title = {Implementaci&oacute;n de un Sistema de Informaci&oacute;n Geogr&aacute;fica en Municipios de la Zona Norte de la Provincia de Santa Cruz},
+                          journal = {X Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2008},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2008.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/20631}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="PASA2008" class="entry">
+                  <td>
+                    Pastrana S, Vidal P and Lasso M (2008),
+                    <i>"Sistema de Control de Acceso y Permanencia PASA"</i>,
+                    Revista de Ciencia y Tecnolog&iacute;a. Vol. 9, pp. 129-140.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('PASA2008','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_PASA2008" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{PASA2008,
+                          author = {Pastrana, S. and Vidal, P. and Lasso, M.},
+                          title = {Sistema de Control de Acceso y Permanencia PASA},
+                          journal = {Revista de Ciencia y Tecnolog&iacute;a},
+                          year = {2008},
+                          volume = {9},
+                          pages = {129-140},
+                          note = {ISSN: 1850-0870. Indexada en Latindex run:./PUBLICACIONES/VIDAL_PASA.pdf[PDF] http://www.palermo.edu/ingenieria/Ciencia_y_tecnologia/ciencia_y_tecno_9.html}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="CAIP2007" class="entry">
+                  <td>
+                    Villagra A, Montenegro C, de San Pedro M, Lasso M, Vidal P
+                    and Pandolfi D (2007),
+                    <i
+                      >"Mantenimiento de locaciones petroleras mediante un
+                      Algoritmo Multirecombinativo"</i
+                    >, 8^circ CONGRESO INTERAMERICANO DE COMPUTACION APLICADA A
+                    LA INDUSTRIA DE PROCESOS., In 8^circ CONGRESO INTERAMERICANO
+                    DE COMPUTACION APLICADA A LA INDUSTRIA DE PROCESOS. Centro
+                    de Informaci&oacute;n Tecnol&oacute;gica (CIT).
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('CAIP2007','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_CAIP2007" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @inproceedings{CAIP2007,
+                          author = {Villagra, A. and Montenegro, C. and de San Pedro, M. and Lasso, M. and Vidal, P. and Pandolfi, D.},
+                          title = {Mantenimiento de locaciones petroleras mediante un Algoritmo Multirecombinativo},
+                          booktitle = {8^circ CONGRESO INTERAMERICANO DE COMPUTACION APLICADA A LA INDUSTRIA DE PROCESOS},
+                          journal = {8^circ CONGRESO INTERAMERICANO DE COMPUTACION APLICADA A LA INDUSTRIA DE PROCESOS},
+                          publisher = {Centro de Informaci&oacute;n Tecnol&oacute;gica (CIT)},
+                          year = {2007},
+                          note = {http://www.citrevistas.cl/documentos/caip2007-trabajos.pdf}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+                <tr id="WICC2007" class="entry">
+                  <td>
+                    Lasso M, Vidal M, Villagra A, de San Pedro M. E., Pandolfi D
+                    and Errecalde E (2007),
+                    <i
+                      >"Identificaci&oacute;n de Individuos en Edificios
+                      Inteligentes"</i
+                    >, IX Workshop de Investigadores en Ciencias de la
+                    Computaci&oacute;n.
+                    <p class="infolinks">
+                      [<a href="javascript:toggleInfo('WICC2007','bibtex')"
+                        >BibTeX</a
+                      >]
+                    </p>
+                  </td>
+                </tr>
+                <tr id="bib_WICC2007" class="bibtex noshow">
+                  <td>
+                    <b>BibTeX</b>:
+                    <pre>
+                        @article{WICC2007,
+                          author = {Lasso, M. and Vidal M. and Villagra A. and de San Pedro M. E. and Pandolfi, D. and Errecalde E.},
+                          title = {Identificaci&oacute;n de Individuos en Edificios Inteligentes},
+                          journal = {IX Workshop de Investigadores en Ciencias de la Computaci&oacute;n},
+                          year = {2007},
+                          note = {run:./PUBLICACIONES/VIDAL_WICC_2007.pdf[PDF] http://sedici.unlp.edu.ar/handle/10915/20311}
+                        }
+                        </pre
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--/.portfolio-item-->
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+    <!--/#portfolio-->
+
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">
+            Software Development
+          </h2>
+          <p class="text-center wow fadeInDown">
+            For software development it is necessary to have different types of
+            skills. The correct technical skills are necessary to get the job
+            done <br />
+            The soft skills are related to each person and how they can interact
+            with the rest of the team to which they belong and perform
+            efficiently.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="features">
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="0ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-line-chart"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Programming languages</h4>
+                  <p>
+                    A software development process is the process of dividing
+                    software development work into distinct phases to improve
+                    design, product management, and project management. It is
+                    also known as a software development life cycle.<br />
+                    Having a defined process or adapting according to needs
+                    through a development process is necessary since that all we
+                    can achieve thebusiness goals on time, to be more efficient,
+                    to win lots of money and to be successful.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="100ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-cubes"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Containers</h4>
+                  <p>
+                    Container is a portable, extensible, open-source platform
+                    for managing containerized workloads and services, that
+                    facilitates both declarative configuration and automation
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="200ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-pie-chart"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Methodologies</h4>
+                  <p>
+                    The software development methodology is a framework that is
+                    used to structure, plan, and control the entire process of
+                    an system. The acquisition of knowledge in agile development
+                    and patterns is crucial
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="300ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-bar-chart"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Testing</h4>
+                  <p>
+                    Continuous improvement has led me to improve skills
+                    regarding the verification and validation of development
+                    requirements. Technologies such as selenium or jmeter are
+                    used
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="400ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-language"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Web and movile development</h4>
+                  <p>
+                    Today the world is connected through the internet. It is
+                    necessary applications that allow the management of the
+                    available resources through web applications or for mobile
+                    devices.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+
+            <div
+              class="col-md-4 col-sm-6 wow fadeInUp"
+              data-wow-duration="300ms"
+              data-wow-delay="500ms"
+            >
+              <div class="media service-box">
+                <div class="pull-left">
+                  <i class="fa fa-bullseye"></i>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Databases</h4>
+                  <p>
+                    Data generated by hundreds of different sources must be
+                    managed in some way. For this, there are various types of
+                    databases and therefore query languages associated with them
+                    that must be managed efficiently.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/.col-md-4-->
+          </div>
+        </div>
+        <!--/.row-->
+      </div>
+      <!--/.container-->
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Our Process</h2>
+          <p class="text-center wow fadeInDown">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut <br />
+            et dolore magna aliqua. Ut enim ad minim veniam
+          </p>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-md-2 col-md-4 col-xs-6">
+            <div
+              class="wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="0ms"
+            >
+              <div class="icon-circle">
+                <span>1</span>
+                <i class="fa fa-coffee fa-2x"></i>
+              </div>
+              <h3>MEET</h3>
+            </div>
+          </div>
+          <div class="col-md-2 col-md-4 col-xs-6">
+            <div
+              class="wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="100ms"
+            >
+              <div class="icon-circle">
+                <span>2</span>
+                <i class="fa fa-bullhorn fa-2x"></i>
+              </div>
+              <h3>PLAN</h3>
+            </div>
+          </div>
+          <div class="col-md-2 col-md-4 col-xs-6">
+            <div
+              class="wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="200ms"
+            >
+              <div class="icon-circle">
+                <span>3</span>
+                <i class="fa fa-image fa-2x"></i>
+              </div>
+              <h3>DESIGN</h3>
+            </div>
+          </div>
+          <div class="col-md-2 col-md-4 col-xs-6">
+            <div
+              class="wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="300ms"
+            >
+              <div class="icon-circle">
+                <span>4</span>
+                <i class="fa fa-heart fa-2x"></i>
+              </div>
+              <h3>DEVELOP</h3>
+            </div>
+          </div>
+          <div class="col-md-2 col-md-4 col-xs-6">
+            <div
+              class="wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="400ms"
+            >
+              <div class="icon-circle">
+                <span>5</span>
+                <i class="fa fa-shopping-cart fa-2x"></i>
+              </div>
+              <h3>TESTING</h3>
+            </div>
+          </div>
+          <div class="col-md-2 col-md-4 col-xs-6">
+            <div
+              class="wow fadeInUp"
+              data-wow-duration="400ms"
+              data-wow-delay="500ms"
+            >
+              <div class="icon-circle">
+                <span>6</span>
+                <i class="fa fa-space-shuttle fa-2x"></i>
+              </div>
+              <h3>LAUNCH</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#services-->
+
+    <section id="work-process"></section>
+    <!--/#work-process-->
+
+    <section id="get-in-touch">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title text-center wow fadeInDown">Get in Touch</h2>
+          <p class="text-center wow fadeInDown">
+            If you have any questions, you can contact me by email
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div
+        id="google-map"
+        style="height: 650px"
+        data-latitude="-32.880148"
+        data-longitude="-68.836232"
+      ></div>
+      <div class="container-wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6">
+              <div class="contact-form">
+                <h3>Contact Info</h3>
+                <form
+                  id="main-contact-form"
+                  name="contact-form"
+                  method="post"
+                  action="#"
+                >
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      placeholder="Name"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="subject"
+                      class="form-control"
+                      placeholder="Subject"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <textarea
+                      name="message"
+                      class="form-control"
+                      rows="8"
+                      placeholder="Message"
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/#get-in-touch-->
+
+    <footer id="footer">
+      <div class="container">
+        <div class="row"></div>
+      </div>
+    </footer>
+    <!--/#footer-->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/mousescroll.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.inview.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
